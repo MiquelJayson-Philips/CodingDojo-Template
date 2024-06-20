@@ -38,4 +38,10 @@ class MainKtTest {
         val result = converter.convertNumeral(0)
         assertNull(result)
     }
+
+    @Test
+    fun doesConvertRomanNumeralReturnIIonTwo() {
+        val result = converter.convertNumeral(2)
+        assertEquals("II", result)
+    }
 }
