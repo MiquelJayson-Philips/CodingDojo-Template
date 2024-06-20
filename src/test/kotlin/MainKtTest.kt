@@ -32,4 +32,10 @@ class MainKtTest {
         // Then
         assertEquals(expected, result)
     }
+
+    @Test
+    fun doesConvertRomanNumeralReturnNullOnInvalidInput() {
+        val result = converter.convertNumeral(0)
+        assertNull(result)
+    }
 }
