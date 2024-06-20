@@ -22,26 +22,38 @@ class MainKtTest {
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnIWithInputOne() {
-        // Given
-        val expected = "I"
-
-        // When
-        val result = converter.convertNumeral(1)
-
-        // Then
-        assertEquals(expected, result)
-    }
-
-    @Test
     fun doesConvertRomanNumeralReturnNullOnInvalidInput() {
         val result = converter.convertNumeral(0)
         assertNull(result)
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnIIonTwo() {
+    fun doesConvertRomanNumeralReturnIWithOne() {
+        val result = converter.convertNumeral(1)
+        assertEquals("I", result)
+    }
+
+    @Test
+    fun doesConvertRomanNumeralReturnIIWithTwo() {
         val result = converter.convertNumeral(2)
         assertEquals("II", result)
+    }
+
+    @Test
+    fun doesConvertRomanNumeralReturnIIIWithThree() {
+        val result = converter.convertNumeral(3)
+        assertEquals("III", result)
+    }
+
+    @Test
+    fun doesConvertRomanNumeralReturnIVWithFour() {
+        val result = converter.convertNumeral(4)
+        assertEquals("IV", result)
+    }
+
+    @Test
+    fun doesConvertRomanNumeralReturnVWithFive() {
+        val result = converter.convertNumeral(5)
+        assertEquals("V", result)
     }
 }
