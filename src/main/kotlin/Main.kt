@@ -1,8 +1,8 @@
 package org.example
 
-class Converter(){
-    fun convertNumeral(number: Int) : String? {
-        return when(number) {
+class Converter() {
+    fun convertNumeral(number: Int): String? {
+        return when (number) {
             1 -> "I"
             2 -> "II"
             3 -> "III"
@@ -13,6 +13,10 @@ class Converter(){
             100 -> "C"
             else -> null
         }
+    }
+
+    fun calculateLeftover(number: Int): Int {
+        return 50
     }
 }
 

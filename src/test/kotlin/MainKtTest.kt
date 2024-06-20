@@ -74,4 +74,10 @@ class MainKtTest {
         val result = converter.convertNumeral(100)
         assertEquals("C", result)
     }
+
+    @Test
+    fun calculateRomanNumeralLeftover() {
+        val result = converter.calculateLeftover(100)
+        assertEquals(50, result)
+    }
 }
