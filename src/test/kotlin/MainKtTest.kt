@@ -62,4 +62,16 @@ class MainKtTest {
         val result = converter.convertNumeral(10)
         assertEquals("X", result)
     }
+
+    @Test
+    fun doesConvertRomanNumeralReturnLWithFifty() {
+        val result = converter.convertNumeral(50)
+        assertEquals("L", result)
+    }
+
+    @Test
+    fun doesConvertRomanNumeralReturnCWithHundred() {
+        val result = converter.convertNumeral(100)
+        assertEquals("C", result)
+    }
 }
