@@ -2,6 +2,7 @@ import org.example.Converter
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeAll
 
 /*
 *   Miquel Jayson de Leeuw
@@ -10,24 +11,23 @@ import org.junit.jupiter.api.Assertions.*
 
 class MainKtTest {
 
-    @Test
-    fun doesConverterClassExist() {
-        val converter = Converter()
-    }
 
-    @Test
-    fun doesConvertRomanNumeralFunExist() {
-        val converter = Converter()
-        converter.convertNumeral()
-    }
 
     @Test
     fun doesConvertRomanNumeralFunReturnValue() {
         val expected = ""
-
-        val converter = Converter()
         val result = converter.convertNumeral()
 
         assertEquals(expected, result)
+    }
+
+    companion object {
+        lateinit var converter: Converter
+
+        @JvmStatic
+        @BeforeAll
+        fun setup(): Unit {
+            converter = Converter()
+        }
     }
 }
