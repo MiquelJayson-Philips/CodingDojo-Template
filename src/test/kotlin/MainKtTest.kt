@@ -11,16 +11,6 @@ import org.junit.jupiter.api.BeforeAll
 
 class MainKtTest {
 
-
-
-    @Test
-    fun doesConvertRomanNumeralFunReturnValue() {
-        val expected = ""
-        val result = converter.convertNumeral()
-
-        assertEquals(expected, result)
-    }
-
     companion object {
         lateinit var converter: Converter
 
@@ -29,5 +19,13 @@ class MainKtTest {
         fun setup(): Unit {
             converter = Converter()
         }
+    }
+
+    @Test
+    fun doesConvertRomanNumeralFunReturnValue() {
+        val expected = ""
+        val result = converter.convertNumeral(0)
+
+        assertEquals(expected, result)
     }
 }
