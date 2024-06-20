@@ -56,4 +56,10 @@ class MainKtTest {
         val result = converter.convertNumeral(5)
         assertEquals("V", result)
     }
+
+    @Test
+    fun doesConvertRomanNumeralReturnXWithTen() {
+        val result = converter.convertNumeral(10)
+        assertEquals("X", result)
+    }
 }

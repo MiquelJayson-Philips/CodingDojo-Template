@@ -8,6 +8,7 @@ class Converter(){
             3 -> "III"
             4 -> "IV"
             5 -> "V"
+            10 -> "X"
             else -> null
         }
     }
