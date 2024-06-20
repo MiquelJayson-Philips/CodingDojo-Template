@@ -22,10 +22,14 @@ class MainKtTest {
     }
 
     @Test
-    fun doesConvertRomanNumeralFunReturnSingleDigit() {
+    fun doesConvertRomanNumeralReturnIWithInputOne() {
+        // Given
         val expected = "I"
+
+        // When
         val result = converter.convertNumeral(1)
 
+        // Then
         assertEquals(expected, result)
     }
 }
