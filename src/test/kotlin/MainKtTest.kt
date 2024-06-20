@@ -14,6 +14,11 @@ class MainKtTest {
     @Test
     fun doesConverterClassExist() {
         val converter = Converter()
-        
+    }
+
+    @Test
+    fun doesConvertRomanNumeralFunExist() {
+        val converter = Converter()
+        converter.convertNumeral()
     }
 }

@@ -1,6 +1,10 @@
 package org.example
 
-class Converter(){}
+class Converter(){
+    fun convertNumeral() {
+
+    }
+}
 
 fun main() {
     println("Hello World!")
