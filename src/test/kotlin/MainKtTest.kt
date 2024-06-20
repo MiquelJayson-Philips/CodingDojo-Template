@@ -1,5 +1,4 @@
 import org.example.Converter
-import org.example.foo
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -20,5 +19,15 @@ class MainKtTest {
     fun doesConvertRomanNumeralFunExist() {
         val converter = Converter()
         converter.convertNumeral()
+    }
+
+    @Test
+    fun doesConvertRomanNumeralFunReturnValue() {
+        val expected = 0
+
+        val converter = Converter()
+        val result = converter.convertNumeral()
+
+        assertEquals(expected, result)
     }
 }

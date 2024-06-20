@@ -1,15 +1,11 @@
 package org.example
 
 class Converter(){
-    fun convertNumeral() {
-
+    fun convertNumeral() : Int {
+        return 0
     }
 }
 
 fun main() {
     println("Hello World!")
-}
-
-fun foo() {
-    TODO()
 }
