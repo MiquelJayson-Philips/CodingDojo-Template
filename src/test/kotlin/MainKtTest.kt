@@ -23,7 +23,7 @@ class MainKtTest {
 
     @Test
     fun doesConvertRomanNumeralFunReturnValue() {
-        val expected = 0
+        val expected = ""
 
         val converter = Converter()
         val result = converter.convertNumeral()

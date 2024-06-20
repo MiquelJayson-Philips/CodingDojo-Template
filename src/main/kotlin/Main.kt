@@ -1,8 +1,8 @@
 package org.example
 
 class Converter(){
-    fun convertNumeral() : Int {
-        return 0
+    fun convertNumeral() : String {
+        return ""
     }
 }
 
