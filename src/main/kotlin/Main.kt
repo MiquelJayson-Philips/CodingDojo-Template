@@ -2,14 +2,6 @@ package org.example
 
 class Converter {
 
-    companion object {
-        val commonRomanNumeralsList = listOf<Int>(1, 2, 3, 5, 10, 50, 100, 500, 1000)
-    }
-
-    fun isCommonRomanNumeral(number: Int): Boolean {
-        return commonRomanNumeralsList.contains(number)
-    }
-
     fun calculateLeftoverOfAmount(number: Int, amount: Int): Int {
         return number % amount
     }
@@ -18,7 +10,7 @@ class Converter {
         return number / amount
     }
 
-    fun buildRomanNumeralStringFromNumber(number: Int, amount: Int, numeral: String) : String {
+    fun buildRomanNumeralStringFromNumber(number: Int, amount: Int, numeral: String): String {
         var resultString = ""
         val fits = calculateFittingTimesOfAmount(number, amount)
 
@@ -30,80 +22,62 @@ class Converter {
     }
 
     fun retrieveRomanNumeralFromNumber(number: Int): String {
-        return if (isCommonRomanNumeral(number)) {
-            retrieveCorrelatingCommonRomanNumeral(number)
+        var resultString = ""
+
+        resultString += buildRomanNumeralStringFromNumber(number, 1000, numeral = "M")
+        var amountLeft = calculateLeftoverOfAmount(number, 1000)
+
+        if (amountLeft >= 900) {
+            resultString.dropLast(1)
+            resultString += "CM"
+            amountLeft -= 900
+        }
+
+        resultString += buildRomanNumeralStringFromNumber(amountLeft, 500, numeral = "D")
+        amountLeft = calculateLeftoverOfAmount(amountLeft, 500)
+
+        if (amountLeft >= 400) {
+            resultString.dropLast(1)
+            resultString += "CD"
+            amountLeft -= 400
+        }
+
+        resultString += buildRomanNumeralStringFromNumber(amountLeft, 100, numeral = "C")
+        amountLeft = calculateLeftoverOfAmount(amountLeft, 100)
+
+        if (amountLeft >= 90) {
+            resultString.dropLast(1)
+            resultString += "XC"
+            amountLeft -= 90
+        }
+
+        resultString += buildRomanNumeralStringFromNumber(amountLeft, 50, numeral = "L")
+        amountLeft = calculateLeftoverOfAmount(amountLeft, 50)
+
+        if (amountLeft >= 40) {
+            resultString.dropLast(1)
+            resultString += "XL"
+            amountLeft -= 40
+        }
+
+        resultString += buildRomanNumeralStringFromNumber(amountLeft, 10, numeral = "X")
+        amountLeft = calculateLeftoverOfAmount(amountLeft, 10)
+
+        if (amountLeft == 9) {
+            resultString.dropLast(1)
+            resultString += "IX"
         } else {
-            var resultString = ""
-            var amountLeft = 0
+            resultString += buildRomanNumeralStringFromNumber(amountLeft, 5, numeral = "V")
+            amountLeft = calculateLeftoverOfAmount(amountLeft, 5)
 
-            resultString += buildRomanNumeralStringFromNumber(number, 1000, numeral = "M")
-            amountLeft = calculateLeftoverOfAmount(number, 1000)
-
-            if (amountLeft >= 900){
+            if (amountLeft == 4) {
                 resultString.dropLast(1)
-                resultString += "CM"
-                amountLeft -= 900
-            }
-
-            resultString += buildRomanNumeralStringFromNumber(amountLeft, 500, numeral = "D")
-            amountLeft = calculateLeftoverOfAmount(amountLeft, 500)
-
-            if (amountLeft >= 400){
-                resultString.dropLast(1)
-                resultString += "CD"
-                amountLeft -= 400
-            }
-
-            resultString += buildRomanNumeralStringFromNumber(amountLeft, 100, numeral = "C")
-            amountLeft = calculateLeftoverOfAmount(amountLeft, 100)
-
-            if (amountLeft >= 90){
-                resultString.dropLast(1)
-                resultString += "XC"
-                amountLeft -= 90
-            }
-
-            resultString += buildRomanNumeralStringFromNumber(amountLeft, 50, numeral = "L")
-            amountLeft = calculateLeftoverOfAmount(amountLeft, 50)
-
-            if (amountLeft >= 40){
-                resultString.dropLast(1)
-                resultString += "XL"
-                amountLeft -= 40
-            }
-
-            resultString += buildRomanNumeralStringFromNumber(amountLeft, 10, numeral = "X")
-            amountLeft = calculateLeftoverOfAmount(amountLeft, 10)
-
-            if (amountLeft == 9){
-                resultString.dropLast(1)
-                resultString += "IX"
+                resultString += "IV"
             } else {
-                resultString += buildRomanNumeralStringFromNumber(amountLeft, 5, numeral = "V")
-                amountLeft = calculateLeftoverOfAmount(amountLeft, 5)
-
-                if (amountLeft == 4) {
-                    resultString.dropLast(1)
-                    resultString += "IV"
-                } else {
-                    resultString += buildRomanNumeralStringFromNumber(amountLeft, 1, numeral = "I")
-                }
+                resultString += buildRomanNumeralStringFromNumber(amountLeft, 1, numeral = "I")
             }
-
-            resultString
         }
-    }
 
-    fun retrieveCorrelatingCommonRomanNumeral(number: Int): String {
-        return when (number) {
-            1 -> "I"
-            5 -> "V"
-            10 -> "X"
-            50 -> "L"
-            100 -> "C"
-            500 -> "D"
-            1000 -> "M"
-            else -> throw NotImplementedError()
-        }
+        return resultString
     }
 }

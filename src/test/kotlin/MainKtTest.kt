@@ -22,16 +22,6 @@ class MainKtTest {
     }
 
     @Test
-    fun checkIfNumberIsCommonRomanNumeral() {
-        assertEquals(true, converter.isCommonRomanNumeral(1000))
-    }
-
-    @Test
-    fun checkIfNumberIsNotACommonRomanNumeral() {
-        assertEquals(false, converter.isCommonRomanNumeral(775))
-    }
-
-    @Test
     fun calculateLeftoverOfAmount() {
         assertEquals(50, converter.calculateLeftoverOfAmount(150, 100))
     }
@@ -44,11 +34,6 @@ class MainKtTest {
     @Test
     fun convertRomanNumeralFromNumber() {
         assertEquals("MM", converter.retrieveRomanNumeralFromNumber(2000))
-    }
-
-    @Test
-    fun retrieveCorrelatingCommonRomanNumeral() {
-        assertEquals("M", converter.retrieveCorrelatingCommonRomanNumeral(1000))
     }
 
     @Test
