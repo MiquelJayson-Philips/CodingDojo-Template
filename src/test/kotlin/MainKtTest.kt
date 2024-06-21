@@ -1,8 +1,8 @@
-import org.example.Converter
+import org.example.RomanNumeral
+import org.example.calculateFittingTimesOfAmount
+import org.example.calculateLeftoverOfAmount
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import kotlin.test.Ignore
 
 /*
 *   Miquel Jayson de Leeuw
@@ -11,109 +11,99 @@ import kotlin.test.Ignore
 
 class MainKtTest {
 
-    companion object {
-        lateinit var converter: Converter
-
-        @JvmStatic
-        @BeforeAll
-        fun setup() {
-            converter = Converter()
-        }
-    }
-
     @Test
     fun calculateLeftoverOfAmount() {
-        assertEquals(50, converter.calculateLeftoverOfAmount(150, 100))
+        assertEquals(50, calculateLeftoverOfAmount(150, 100))
     }
 
     @Test
     fun calculateHowManyTimesANumberFitsInCertainAmount() {
-        assertEquals(1, converter.calculateFittingTimesOfAmount(150, 100))
+        assertEquals(1, calculateFittingTimesOfAmount(150, 100))
     }
 
     @Test
     fun convertRomanNumeralFromNumber() {
-        assertEquals("MM", converter.retrieveRomanNumeralFromNumber(2000))
+        assertEquals("MM", 2000.RomanNumeral())
     }
 
     @Test
     fun convertOneDefinedRomanNumeralFromNumber() {
-        assertEquals("M", converter.retrieveRomanNumeralFromNumber(1000))
+        assertEquals("M", 1000.RomanNumeral())
     }
 
     @Test
     fun convertTwoDefinedRomanNumeralFromNumber() {
-        assertEquals("MD", converter.retrieveRomanNumeralFromNumber(1500))
+        assertEquals("MD", 1500.RomanNumeral())
     }
 
     @Test
     fun convertThreeDefinedRomanNumeralFromNumber() {
-        assertEquals("MDC", converter.retrieveRomanNumeralFromNumber(1600))
+        assertEquals("MDC", 1600.RomanNumeral())
     }
 
     @Test
     fun convertFourDefinedRomanNumeralFromNumber() {
-        assertEquals("MDCL", converter.retrieveRomanNumeralFromNumber(1650))
+        assertEquals("MDCL", 1650.RomanNumeral())
     }
 
     @Test
     fun convertFiveDefinedRomanNumeralFromNumber() {
-        assertEquals("MDCLX", converter.retrieveRomanNumeralFromNumber(1660))
+        assertEquals("MDCLX", 1660.RomanNumeral())
     }
 
     @Test
     fun convertSixDefinedRomanNumeralFromNumber() {
-        assertEquals("MDCLXV", converter.retrieveRomanNumeralFromNumber(1665))
+        assertEquals("MDCLXV", 1665.RomanNumeral())
     }
 
     @Test
     fun convertSevenDefinedRomanNumeralFromNumber() {
-        assertEquals("MDCLXVI", converter.retrieveRomanNumeralFromNumber(1666))
+        assertEquals("MDCLXVI", 1666.RomanNumeral())
     }
 
     @Test
     fun convertSpecialCaseRomanNumeralFromStandaloneNumberFour() {
-        assertEquals("IV", converter.retrieveRomanNumeralFromNumber(4))
+        assertEquals("IV", 4.RomanNumeral())
     }
 
     @Test
     fun convertSpecialCaseRomanNumeralFromNumberFour() {
-        assertEquals("MDCLXIV", converter.retrieveRomanNumeralFromNumber(1664))
+        assertEquals("MDCLXIV", 1664.RomanNumeral())
     }
 
     @Test
     fun convertSpecialCaseRomanNumeralFromNumberNine() {
-        assertEquals("IX", converter.retrieveRomanNumeralFromNumber(9))
+        assertEquals("IX", 9.RomanNumeral())
     }
 
     @Test
     fun convert39toRomanNumeral() {
-        assertEquals("XXXIX", converter.retrieveRomanNumeralFromNumber(39))
+        assertEquals("XXXIX", 39.RomanNumeral())
     }
 
     @Test
     fun convert246toRomanNumeral() {
-        assertEquals("CCXLVI", converter.retrieveRomanNumeralFromNumber(246))
+        assertEquals("CCXLVI", 246.RomanNumeral())
     }
 
     @Test
     fun convert789toRomanNumeral() {
-        assertEquals("DCCLXXXIX", converter.retrieveRomanNumeralFromNumber(789))
+        assertEquals("DCCLXXXIX", 789.RomanNumeral())
     }
 
     @Test
     fun convert2421toRomanNumeral() {
-        assertEquals("MMCDXXI", converter.retrieveRomanNumeralFromNumber(2421))
+        assertEquals("MMCDXXI", 2421.RomanNumeral())
     }
 
     @Test
     fun convert3999toRomanNumeral() {
-        assertEquals("MMMCMXCIX", converter.retrieveRomanNumeralFromNumber(3999))
+        assertEquals("MMMCMXCIX", 3999.RomanNumeral())
     }
 
     @Test
     fun convert1944toRomanNumeral() {
-        assertEquals("MCMXLIV", converter.retrieveRomanNumeralFromNumber(1944))
+        assertEquals("MCMXLIV", 1944.RomanNumeral())
     }
 
 }
