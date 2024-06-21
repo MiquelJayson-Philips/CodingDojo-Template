@@ -26,6 +26,19 @@ class MainKtTest {
         assertEquals("M", buildRomanNumeralStringFromNumber(1000, RomanNumeral.THOUSAND))
     }
 
+    @Test
+    fun constructRomanNumeralAndReturnRemainder() {
+        val result = constructRomanNumeralAndReturnRemainder(
+            inputString = "",
+            remainder = 500,
+            numeral =  RomanNumeral.FIVE_HUNDRED,
+            specialNumeral = SpecialRomanNumeral.FOUR_HUNDRED
+        )
+
+        assertEquals("D", result.first)
+    }
+
+
     /* Test Cases */
 
     @Test
