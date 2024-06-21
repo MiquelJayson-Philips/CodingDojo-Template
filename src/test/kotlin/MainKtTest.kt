@@ -28,7 +28,7 @@ class MainKtTest {
 
     @Test
     fun constructRomanNumeralAndReturnRemainder() {
-        val result = constructRomanNumeralAndReturnRemainder(
+        val result = constructRomanNumeral(
             data = ConstructorData("", 500),
             numeral = RomanNumeral.FIVE_HUNDRED,
             specialNumeral = SpecialRomanNumeral.FOUR_HUNDRED

@@ -38,7 +38,7 @@ fun Int.calculateAmountOfTimesItFits(amount: Int): Int {
     return this / amount
 }
 
-fun constructRomanNumeralAndReturnRemainder(
+fun constructRomanNumeral(
     data: ConstructorData,
     numeral: RomanNumeral,
     specialNumeral: SpecialRomanNumeral
@@ -59,44 +59,45 @@ fun constructRomanNumeralAndReturnRemainder(
 }
 
 fun Int.romanNumeral(): String {
+    var result = ConstructorData("", this)
 
-    var result = constructRomanNumeralAndReturnRemainder(
-        data = ConstructorData("", this),
+    result = constructRomanNumeral(
+        data = result,
         numeral = RomanNumeral.THOUSAND,
         specialNumeral = SpecialRomanNumeral.NINE_HUNDRED
     )
 
-    result = constructRomanNumeralAndReturnRemainder(
+    result = constructRomanNumeral(
         data = result,
         numeral = RomanNumeral.FIVE_HUNDRED,
         specialNumeral = SpecialRomanNumeral.FOUR_HUNDRED
     )
 
-    result = constructRomanNumeralAndReturnRemainder(
+    result = constructRomanNumeral(
         data = result,
         numeral = RomanNumeral.HUNDRED,
         specialNumeral = SpecialRomanNumeral.NINETY
     )
 
-    result = constructRomanNumeralAndReturnRemainder(
+    result = constructRomanNumeral(
         data = result,
         numeral = RomanNumeral.FIFTY,
         specialNumeral = SpecialRomanNumeral.FORTY
     )
 
-    result = constructRomanNumeralAndReturnRemainder(
+    result = constructRomanNumeral(
         data = result,
         numeral = RomanNumeral.TEN,
         specialNumeral = SpecialRomanNumeral.NINE
     )
 
-    result = constructRomanNumeralAndReturnRemainder(
+    result = constructRomanNumeral(
         data = result,
         numeral = RomanNumeral.FIVE,
         specialNumeral = SpecialRomanNumeral.FOUR
     )
 
-    result = constructRomanNumeralAndReturnRemainder(
+    result = constructRomanNumeral(
         data = result,
         numeral = RomanNumeral.ONE,
         specialNumeral = SpecialRomanNumeral.NONE
