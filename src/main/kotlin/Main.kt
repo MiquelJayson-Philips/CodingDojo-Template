@@ -19,7 +19,7 @@ fun buildRomanNumeralStringFromNumber(number: Int, amount: Int, numeral: String)
     return resultString
 }
 
-fun Int.RomanNumeral(): String {
+fun Int.romanNumeral(): String {
     var resultString = ""
 
     resultString += buildRomanNumeralStringFromNumber(this, 1000, numeral = "M")
