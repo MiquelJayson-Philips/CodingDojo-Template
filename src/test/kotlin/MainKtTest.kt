@@ -1,8 +1,7 @@
 import org.example.Converter
-import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
 
 /*
 *   Miquel Jayson de Leeuw
@@ -16,68 +15,74 @@ class MainKtTest {
 
         @JvmStatic
         @BeforeAll
-        fun setup(): Unit {
+        fun setup() {
             converter = Converter()
         }
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnNullOnInvalidInput() {
-        val result = converter.convertNumeral(0)
-        assertNull(result)
+    fun checkIfNumberIsCommonRomanNumeral() {
+        assertEquals(true, converter.isCommonRomanNumeral(1000))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnIWithOne() {
-        val result = converter.convertNumeral(1)
-        assertEquals("I", result)
+    fun checkIfNumberIsNotACommonRomanNumeral() {
+        assertEquals(false, converter.isCommonRomanNumeral(775))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnIIWithTwo() {
-        val result = converter.convertNumeral(2)
-        assertEquals("II", result)
+    fun calculateLeftoverOfAmount() {
+        assertEquals(50, converter.calculateLeftoverOfAmount(150, 100))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnIIIWithThree() {
-        val result = converter.convertNumeral(3)
-        assertEquals("III", result)
+    fun calculateHowManyTimesANumberFitsInCertainAmount() {
+        assertEquals(1, converter.calculateFittingTimesOfAmount(150, 100))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnIVWithFour() {
-        val result = converter.convertNumeral(4)
-        assertEquals("IV", result)
+    fun convertRomanNumeralFromNumber() {
+        assertEquals("MM", converter.retrieveRomanNumeralFromNumber(2000))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnVWithFive() {
-        val result = converter.convertNumeral(5)
-        assertEquals("V", result)
+    fun retrieveCorrelatingCommonRomanNumeral() {
+        assertEquals("M", converter.retrieveCorrelatingCommonRomanNumeral(1000))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnXWithTen() {
-        val result = converter.convertNumeral(10)
-        assertEquals("X", result)
+    fun convertOneDefinedRomanNumeralFromNumber() {
+        assertEquals("M", converter.retrieveRomanNumeralFromNumber(1000))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnLWithFifty() {
-        val result = converter.convertNumeral(50)
-        assertEquals("L", result)
+    fun convertTwoDefinedRomanNumeralFromNumber() {
+        assertEquals("MD", converter.retrieveRomanNumeralFromNumber(1500))
     }
 
     @Test
-    fun doesConvertRomanNumeralReturnCWithHundred() {
-        val result = converter.convertNumeral(100)
-        assertEquals("C", result)
+    fun convertThreeDefinedRomanNumeralFromNumber() {
+        assertEquals("MDC", converter.retrieveRomanNumeralFromNumber(1600))
     }
 
     @Test
-    fun calculateRomanNumeralLeftover() {
-        val result = converter.calculateLeftover(100)
-        assertEquals(50, result)
+    fun convertFourDefinedRomanNumeralFromNumber() {
+        assertEquals("MDCL", converter.retrieveRomanNumeralFromNumber(1650))
     }
+
+    @Test
+    fun convertFiveDefinedRomanNumeralFromNumber() {
+        assertEquals("MDCLX", converter.retrieveRomanNumeralFromNumber(1660))
+    }
+
+    @Test
+    fun convertSixDefinedRomanNumeralFromNumber() {
+        assertEquals("MDCLXV", converter.retrieveRomanNumeralFromNumber(1665))
+    }
+
+    @Test
+    fun convertSevenDefinedRomanNumeralFromNumber() {
+        assertEquals("MDCLXVI", converter.retrieveRomanNumeralFromNumber(1666))
+    }
+
 }
