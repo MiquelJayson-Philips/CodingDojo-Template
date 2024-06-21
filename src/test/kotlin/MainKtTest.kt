@@ -1,6 +1,7 @@
 import org.example.romanNumeral
 import org.example.calculateFittingTimesOfAmount
 import org.example.calculateLeftoverOfAmount
+import org.example.repeatRomanNumeral
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
@@ -21,6 +22,11 @@ class MainKtTest {
     @Test
     fun calculateHowManyTimesANumberFitsInCertainAmount() {
         assertEquals(1, calculateFittingTimesOfAmount(150, 100))
+    }
+
+    @Test
+    fun concatenateRepeatedRomanNumeralManyTimes() {
+        assertEquals("MMM", repeatRomanNumeral("M", 3))
     }
 
     /* Test Cases */

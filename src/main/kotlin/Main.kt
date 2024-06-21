@@ -1,5 +1,7 @@
 package org.example
 
+import jdk.jfr.Timespan
+
 fun calculateLeftoverOfAmount(number: Int, amount: Int): Int {
     return number % amount
 }
@@ -8,15 +10,16 @@ fun calculateFittingTimesOfAmount(number: Int, amount: Int): Int {
     return number / amount
 }
 
-fun buildRomanNumeralStringFromNumber(number: Int, amount: Int, numeral: String): String {
+fun repeatRomanNumeral(numeral: String, times: Int): String {
     var resultString = ""
-    val fits = calculateFittingTimesOfAmount(number, amount)
-
-    for (i in 1..fits) {
+    for (i in 1..times) {
         resultString += numeral
     }
-
     return resultString
+}
+
+fun buildRomanNumeralStringFromNumber(number: Int, amount: Int, numeral: String): String {
+    return repeatRomanNumeral(numeral, calculateFittingTimesOfAmount(number, amount))
 }
 
 fun Int.romanNumeral(): String {
