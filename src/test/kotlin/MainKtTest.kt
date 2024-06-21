@@ -29,13 +29,12 @@ class MainKtTest {
     @Test
     fun constructRomanNumeralAndReturnRemainder() {
         val result = constructRomanNumeralAndReturnRemainder(
-            inputString = "",
-            remainder = 500,
-            numeral =  RomanNumeral.FIVE_HUNDRED,
+            data = ConstructorData("", 500),
+            numeral = RomanNumeral.FIVE_HUNDRED,
             specialNumeral = SpecialRomanNumeral.FOUR_HUNDRED
         )
 
-        assertEquals("D", result.first)
+        assertEquals("D", result.output)
     }
 
 

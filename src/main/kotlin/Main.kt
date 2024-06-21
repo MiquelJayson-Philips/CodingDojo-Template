@@ -20,7 +20,12 @@ enum class SpecialRomanNumeral(val char: String, val value: Int) {
     NONE("", 0)
 }
 
-fun buildRomanNumeralStringFromNumber(number: Int, numeral : RomanNumeral): String {
+data class ConstructorData(
+    val output: String,
+    val remainder: Int
+)
+
+fun buildRomanNumeralStringFromNumber(number: Int, numeral: RomanNumeral): String {
     val times = number.calculateAmountOfTimesItFits(numeral.value)
     return numeral.char.repeat(times)
 }
@@ -33,9 +38,13 @@ fun Int.calculateAmountOfTimesItFits(amount: Int): Int {
     return this / amount
 }
 
-fun constructRomanNumeralAndReturnRemainder(inputString: String, remainder: Int, numeral: RomanNumeral, specialNumeral: SpecialRomanNumeral) : Pair<String, Int> {
-    var builderString = inputString
-    var remaining = remainder
+fun constructRomanNumeralAndReturnRemainder(
+    data: ConstructorData,
+    numeral: RomanNumeral,
+    specialNumeral: SpecialRomanNumeral
+): ConstructorData {
+    var builderString = data.output
+    var remaining = data.remainder
 
     builderString += buildRomanNumeralStringFromNumber(remaining, numeral)
     remaining = remaining.calculateLeftover(numeral.value)
@@ -46,82 +55,52 @@ fun constructRomanNumeralAndReturnRemainder(inputString: String, remainder: Int,
         remaining -= specialNumeral.value
     }
 
-    return Pair(builderString, remaining)
+    return ConstructorData(builderString, remaining)
 }
 
 fun Int.romanNumeral(): String {
 
     var result = constructRomanNumeralAndReturnRemainder(
-        inputString = "",
-        remainder = this,
-        numeral =  RomanNumeral.THOUSAND,
+        data = ConstructorData("", this),
+        numeral = RomanNumeral.THOUSAND,
         specialNumeral = SpecialRomanNumeral.NINE_HUNDRED
     )
 
     result = constructRomanNumeralAndReturnRemainder(
-        inputString = result.first,
-        remainder = result.second,
-        numeral =  RomanNumeral.FIVE_HUNDRED,
+        data = result,
+        numeral = RomanNumeral.FIVE_HUNDRED,
         specialNumeral = SpecialRomanNumeral.FOUR_HUNDRED
     )
 
     result = constructRomanNumeralAndReturnRemainder(
-        inputString = result.first,
-        remainder = result.second,
-        numeral =  RomanNumeral.HUNDRED,
+        data = result,
+        numeral = RomanNumeral.HUNDRED,
         specialNumeral = SpecialRomanNumeral.NINETY
     )
 
     result = constructRomanNumeralAndReturnRemainder(
-        inputString = result.first,
-        remainder = result.second,
-        numeral =  RomanNumeral.FIFTY,
+        data = result,
+        numeral = RomanNumeral.FIFTY,
         specialNumeral = SpecialRomanNumeral.FORTY
     )
 
     result = constructRomanNumeralAndReturnRemainder(
-        inputString = result.first,
-        remainder = result.second,
-        numeral =  RomanNumeral.TEN,
+        data = result,
+        numeral = RomanNumeral.TEN,
         specialNumeral = SpecialRomanNumeral.NINE
     )
 
     result = constructRomanNumeralAndReturnRemainder(
-        inputString = result.first,
-        remainder = result.second,
-        numeral =  RomanNumeral.FIVE,
+        data = result,
+        numeral = RomanNumeral.FIVE,
         specialNumeral = SpecialRomanNumeral.FOUR
     )
 
     result = constructRomanNumeralAndReturnRemainder(
-        inputString = result.first,
-        remainder = result.second,
-        numeral =  RomanNumeral.ONE,
+        data = result,
+        numeral = RomanNumeral.ONE,
         specialNumeral = SpecialRomanNumeral.NONE
     )
 
-    return result.first
-
-//    var resultString = result.first
-//    resultString += buildRomanNumeralStringFromNumber(result.second, RomanNumeral.TEN)
-//
-//    var remainder = result.second
-//    remainder = remainder.calculateLeftover(RomanNumeral.TEN.value)
-//
-//    if (remainder == SpecialRomanNumeral.NINE.value) {
-//        resultString.dropLast(1)
-//        resultString += SpecialRomanNumeral.NINE.char
-//    } else {
-//        resultString += buildRomanNumeralStringFromNumber(remainder, RomanNumeral.FIVE)
-//        remainder = remainder.calculateLeftover(RomanNumeral.FIVE.value)
-//
-//        if (remainder == SpecialRomanNumeral.FOUR.value) {
-//            resultString.dropLast(1)
-//            resultString += SpecialRomanNumeral.FOUR.char
-//        } else {
-//            resultString += buildRomanNumeralStringFromNumber(remainder, RomanNumeral.ONE)
-//        }
-//    }
-
-//    return resultString
+    return result.output
 }
