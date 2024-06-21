@@ -18,12 +18,12 @@ class MainKtTest {
 
     @Test
     fun calculateHowManyTimesANumberFitsInCertainAmount() {
-        assertEquals(1, 150.calculateFittingAmount(100))
+        assertEquals(1, 150.calculateAmountOfTimesItFits(100))
     }
 
     @Test
     fun buildRepeatingRomanNumeralStringFromNumber() {
-        assertEquals("M", buildRomanNumeralStringFromNumber(1000, 1000, "M"))
+        assertEquals("M", buildRomanNumeralStringFromNumber(1000, RomanNumeral.THOUSAND))
     }
 
     /* Test Cases */
